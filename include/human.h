@@ -15,12 +15,14 @@ protected:
     int age;
     std::string name;
     Gender gender;
+    int money;
 
 public:
+    Human(int age, std::string name, Gender gender, int money = 0);
     Human();
-    Human(int age, const std::string &name, Gender gender);
     ~Human() = default;
     virtual void work();
     int get_age() const;
     std::string get_name() const;
+    int get_money() const;
 };

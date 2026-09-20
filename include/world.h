@@ -22,4 +22,5 @@ public:
     World(std::vector<Human> humans);
     void start_day();
     void add_person(Human human);
+    void delete_random_person();
 };
