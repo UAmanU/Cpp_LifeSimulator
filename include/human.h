@@ -1,6 +1,6 @@
 #pragma once
 // Includes
-
+#include "gender.h"
 // Includes
 
 // STL Includes
@@ -13,10 +13,11 @@ class Human
 private:
     int age;
     std::string name;
+    Gender gender;
 
 public:
     Human();
-    Human(int age, const std::string &name);
+    Human(int age, const std::string &name, Gender gender);
     ~Human() = default;
     virtual void work();
 };
