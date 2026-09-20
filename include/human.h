@@ -1,4 +1,5 @@
 #pragma once
+
 // Includes
 #include "gender.h"
 // Includes
@@ -10,7 +11,7 @@
 
 class Human
 {
-private:
+protected:
     int age;
     std::string name;
     Gender gender;
@@ -20,4 +21,6 @@ public:
     Human(int age, const std::string &name, Gender gender);
     ~Human() = default;
     virtual void work();
+    int get_age() const;
+    std::string get_name() const;
 };
