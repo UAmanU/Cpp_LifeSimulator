@@ -52,7 +52,9 @@ Cpp_LifeSimulator[
             planet.h
             world.h
             UI.h
+            errors.h
             Storage[
+                sqlite3_storage.h
                 storage.h
                 storage_manager.h
             ]
