@@ -9,6 +9,13 @@
 
 // STL Includes
 
+enum class HumanStats
+{
+    age,
+    name,
+    gender,
+    money
+};
 class Human
 {
 protected:

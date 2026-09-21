@@ -76,7 +76,25 @@ Cpp_LifeSimulator[
 __________________________________
 
 
+SQLITE3 TABLES
+__________________________________
 
+players.db:
+
+    |------------------------------------|
+    |       | id | name | money | gender |
+    |------------------------------------|
+    |player |    |      |       |        |
+    |------------------------------------|
+
+    id = INTEGER AUTOINCREMENT
+
+    name = STRING NOT NONE
+
+    money = INTEGER
+    
+    gender = STRING NOT NONE
+__________________________________
 
 
 
