@@ -68,7 +68,7 @@ Cpp_LifeSimulator[
             human.cpp
             UI.cpp
             Storage[
-                storage.cpp
+                sqlite3_storage.cpp
                 storage_manager.cpp
             ]
         ]
@@ -89,13 +89,13 @@ players.db:
     |player |    |      |       |        |
     |------------------------------------|
 
-    id = INTEGER AUTOINCREMENT
+    id = INTEGER PRIMARY KEY AUTOINCREMENT
 
-    name = STRING NOT NONE
+    name = TEXT NOT NULL
 
     money = INTEGER
     
-    gender = STRING NOT NONE
+    gender = INTEGER (0 - human, 1 - woman)
 __________________________________
 
 

@@ -9,7 +9,7 @@
 // STL Includes
 enum class Gender
 {
-    Male,
-    Female,
-    NA
+    Male = 0,
+    Female = 1,
+    NA = 2
 };

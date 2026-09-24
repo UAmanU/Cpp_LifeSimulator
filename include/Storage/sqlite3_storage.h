@@ -10,11 +10,14 @@
 
 class SQLITE3_Storage : public IStorage
 {
+private:
+    sqlite3 *db = nullptr;
+
 public:
     SQLITE3_Storage() = default;
     ~SQLITE3_Storage() = default;
     void create_table() override;
-    bool add_data(player_data) override;
+    bool add_data(player_data player_data) override;
     bool delete_data(int id) override;
     void clear_database() override;
     player_data_types get_player_stat(const std::string &name, HumanStats stat) override;
