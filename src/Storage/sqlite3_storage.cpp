@@ -58,3 +58,36 @@ bool sql_storage::add_data(player_data player_data)
 
     return true;
 }
+bool SQLITE3_Storage::delete_data(int id)
+{
+    const char *delete_command = "DELETE FROM players WHERE id = ?";
+    sqlite3_stmt *stmt = nullptr;
+
+    int result = sqlite3_prepare_v2(db, delete_command, -1, &stmt, nullptr);
+    if (result != SQLITE_OK)
+    {
+        throw Errors::StorageError("Cannot delete data from player database.");
+    }
+    sqlite3_bind_int(stmt, 1, id);
+    result = sqlite3_step(stmt);
+    bool success = false;
+    if (result != SQLITE_DONE)
+    {
+        throw Errors::StorageError("Cannot delete data from player database");
+    }
+    else
+    {
+        success = true;
+    }
+    sqlite3_finalize(stmt);
+    return success;
+}
+void SQLITE3_Storage::clear_database()
+{
+    const char *clear_command = "DELETE * FROM players";
+    int result = sqlite3_exec(db, clear_command, nullptr, nullptr, nullptr);
+    if (result != SQLITE_OK)
+    {
+        throw Errors::StorageError("Cannot clear the database.");
+    }
+}

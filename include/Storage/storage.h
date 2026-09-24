@@ -18,7 +18,7 @@ class IStorage
 {
 public:
     IStorage() = default;
-    ~IStorage() = default;
+    virtual ~IStorage() = default;
     virtual void create_table();
     virtual bool add_data(player_data player_data) = 0;
     virtual bool delete_data(int id) = 0;
