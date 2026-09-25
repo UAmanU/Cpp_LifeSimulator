@@ -83,11 +83,11 @@ __________________________________
 
 players.db:
 
-    |------------------------------------|
-    |       | id | name | money | gender |
-    |------------------------------------|
-    |player |    |      |       |        |
-    |------------------------------------|
+    |---------------------------------------------|
+    |       | id | name | age  | money  | gender  |
+    |---------------------------------------------|
+    |player |    |      |      |        |         |
+    |---------------------------------------------|
 
     id = INTEGER PRIMARY KEY AUTOINCREMENT
 
@@ -100,6 +100,11 @@ __________________________________
 
 
 
+Data format for Storage 
+___________________________________
+
+player_data = std::variant<int,std::string>;
+player_data_types = std::map<HumanStats, player_data>; (id,name,age,money,gender);
 
 
 

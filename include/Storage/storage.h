@@ -22,7 +22,8 @@ public:
     virtual void create_table();
     virtual bool add_data(player_data player_data) = 0;
     virtual bool delete_data(int id) = 0;
-    virtual void clear_database() = 0;
-    virtual player_data_types get_player_stat(const std::string &name, HumanStats stat) = 0;
-    virtual void set_player_money(const std::string &name, int delta) = 0;
+    virtual bool clear_database() = 0;
+    virtual player_data get_player_data(int id) = 0;
+    virtual bool update_data(int id, player_data data) = 0;
+    virtual int get_player_id(const std::string &name) = 0;
 };

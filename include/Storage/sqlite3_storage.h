@@ -19,7 +19,9 @@ public:
     void create_table() override;
     bool add_data(player_data player_data) override;
     bool delete_data(int id) override;
-    void clear_database() override;
-    player_data_types get_player_stat(const std::string &name, HumanStats stat) override;
-    void set_player_money(const std::string &name, int delta) override;
+    bool clear_database() override;
+    player_data get_player_data(int id) override;
+    bool update_data(int id, player_data data);
+    int get_player_id(const std::string &name) override;
+    void close_database();
 };
