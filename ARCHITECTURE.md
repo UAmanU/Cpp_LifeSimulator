@@ -52,7 +52,6 @@ Cpp_LifeSimulator[
             human.h
             planet.h
             world.h
-            UI.h
             errors.h
             Storage[
                 sqlite3_storage.h
@@ -62,6 +61,10 @@ Cpp_LifeSimulator[
             Job[
                 job.h
                 job_types.h
+            ]
+            GUI[
+                input_handler.h
+                display_handler.h
             ]
         ]
         lib[
@@ -78,6 +81,10 @@ Cpp_LifeSimulator[
             ]
             Job[
                 job.cpp
+            ]
+            GUI[
+                input_handler.cpp
+                display_handler.cpp
             ]
         ]
         .gitignore 
