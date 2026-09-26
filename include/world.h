@@ -23,4 +23,5 @@ public:
     void start_day();
     void add_person(Human human);
     void delete_random_person();
+    void set_humans(std::vector<Human> humans);
 };

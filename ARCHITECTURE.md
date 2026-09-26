@@ -17,7 +17,7 @@ launches the code
 
 ↓
 
-WorldLauncher
+ProgrammLauncher
 
 takes data from StorageManager 
 
@@ -47,6 +47,7 @@ __________________________________
 
 Cpp_LifeSimulator[
         include[
+            programm_launcher.h
             gender.h
             human.h
             planet.h
@@ -57,6 +58,10 @@ Cpp_LifeSimulator[
                 sqlite3_storage.h
                 storage.h
                 storage_manager.h
+            ]
+            Job[
+                job.h
+                job_types.h
             ]
         ]
         lib[
@@ -70,6 +75,9 @@ Cpp_LifeSimulator[
             Storage[
                 sqlite3_storage.cpp
                 storage_manager.cpp
+            ]
+            Job[
+                job.cpp
             ]
         ]
         .gitignore 
