@@ -4,6 +4,11 @@
 
 // Includes
 
+// API Includes
+#include <sqlite3.h>
+
+// API Includes
+
 // STL Includes
 
 // STL Includes

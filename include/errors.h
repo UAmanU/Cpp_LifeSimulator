@@ -25,4 +25,9 @@ namespace Errors
     public:
         StorageManagerError(const std::string &msg) : std::runtime_error("Storage Manager exception: " + msg) {};
     };
+    class FileError : public std::runtime_error
+    {
+    public:
+        FileError(const std::string &msg) : std::runtime_error("File exception: " + msg) {}
+    };
 };
