@@ -5,7 +5,7 @@
 // Includes
 
 // STL Includes
-
+#include <string>
 // STL Includes
 
 enum class JobType
@@ -18,3 +18,5 @@ enum class JobType
     waiter,
     NA
 };
+std::string convert_jobType_toString(JobType job_type);
+JobType convert_string_toJobType(const std::string &job_name);

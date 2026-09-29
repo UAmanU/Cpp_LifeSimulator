@@ -13,3 +13,4 @@ enum class Gender
     Female = 1,
     NA = 2
 };
+Gender convert_int_toGender(int num);

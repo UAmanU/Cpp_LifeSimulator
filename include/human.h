@@ -12,14 +12,17 @@
 
 enum class HumanStats
 {
+    id,
     age,
     name,
     gender,
-    money
+    money,
+    job,
 };
 class Human
 {
 protected:
+    int id;
     int age;
     std::string name;
     Gender gender;
@@ -28,7 +31,7 @@ protected:
     int energy;
 
 public:
-    Human(int age, std::string name, Gender gender, int money = 0, Job job);
+    Human(int id, int age, std::string name, Gender gender, int money = 0, Job job);
     Human();
     ~Human() = default;
     virtual void work();
@@ -36,5 +39,6 @@ public:
     int get_age() const;
     std::string get_name() const;
     int get_money() const;
+    Gender get_gender() const;
     bool need_to_rest() const;
 };

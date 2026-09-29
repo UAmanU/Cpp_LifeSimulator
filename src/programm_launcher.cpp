@@ -8,6 +8,15 @@
 // STL Includes
 
 ProgrammLauncher::ProgrammLauncher(std::unique_ptr<StorageManager> storage_manager, std::unique_ptr<World> world) : storage_manager(std::move(storage_manager)), world(std::move(world)) {};
-void ProgrammLauncher::reg(){
+void ProgrammLauncher::reg()
+{
     std::string name = reg_form();
+}
+void ProgrammLauncher::save()
+{
+    return;
+}
+void ProgrammLauncher::start()
+{
+    return;
 }
