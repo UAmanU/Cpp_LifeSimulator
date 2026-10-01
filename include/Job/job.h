@@ -13,6 +13,6 @@ struct Job
     JobType job_type;
     int salary;
     int energy_per_day;
-    Job(int salary = 0, int energy_per_day = 50, JobType job_type = JobType::NA);
+    Job(int salary = 0, JobType job_type = JobType::NA, int energy_per_day = 50);
     ~Job() = default;
 };

@@ -7,7 +7,7 @@
 
 // STL Includes
 #include <string>
-
+#include <variant>
 // STL Includes
 
 enum class HumanStats
@@ -18,7 +18,9 @@ enum class HumanStats
     gender,
     money,
     job,
+    salary
 };
+using player_data_types = std::variant<int, std::string, Gender, Job>;
 class Human
 {
 protected:
@@ -36,9 +38,7 @@ public:
     ~Human() = default;
     virtual void work();
     virtual void sleep();
-    int get_age() const;
-    std::string get_name() const;
-    int get_money() const;
-    Gender get_gender() const;
+    player_data_types get_stat(HumanStats stat) const;
     bool need_to_rest() const;
+    void set_id(int new_id);
 };

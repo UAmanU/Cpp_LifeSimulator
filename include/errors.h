@@ -30,4 +30,9 @@ namespace Errors
     public:
         FileError(const std::string &msg) : std::runtime_error("File exception: " + msg) {}
     };
+    class InvalidDataError : public std::runtime_error
+    {
+    public:
+        InvalidDataError(const std::string &msg) : std::runtime_error("Invalid Data exception: " + msg) {}
+    };
 };

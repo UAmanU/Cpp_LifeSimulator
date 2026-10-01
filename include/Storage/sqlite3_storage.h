@@ -10,7 +10,7 @@
 // API Includes
 
 // STL Includes
-
+#include <vector>
 // STL Includes
 
 class SQLITE3_Storage : public IStorage
@@ -22,6 +22,7 @@ public:
     SQLITE3_Storage() = default;
     ~SQLITE3_Storage() = default;
     void create_table() override;
+    std::vector<int> get_all_id() override;
     bool add_data(player_data player_stats) override;
     bool delete_data(int id) override;
     bool clear_database() override;

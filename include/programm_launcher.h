@@ -15,8 +15,9 @@ class ProgrammLauncher
 private:
     std::unique_ptr<StorageManager> storage_manager;
     std::unique_ptr<World> world;
-    void reg();
     void save();
+    bool is_user_registered();
+    Human reg_user() const;
 
 public:
     ProgrammLauncher(std::unique_ptr<StorageManager> storage_manager, std::unique_ptr<World> world);

@@ -6,7 +6,7 @@
 
 // STL Includes
 #include <memory>
-
+#include <vector>
 // STL Includes
 
 class StorageManager
@@ -17,6 +17,7 @@ private:
     player_data convert_human_toData(const Human &human) const;
     bool is_data_valid(player_data &data) const;
     bool is_id_valid(int id) const;
+    bool update_player(Human player);
 
 public:
     StorageManager(std::unique_ptr<IStorage> storage);
@@ -24,8 +25,8 @@ public:
     void prepare_database();
     void reset_database();
     bool add_player(const Human &player);
+    std::vector<Human> get_all_players();
     Human get_player(int player_id);
-    bool add_player_money(int player_id, int amount);
-    bool spend_player_money(int player_id, int amount);
     void delete_player(int player_id);
+    bool update_all_players(std::vector<Human> players);
 };

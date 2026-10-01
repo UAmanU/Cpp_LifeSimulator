@@ -15,13 +15,13 @@ class World
 private:
     std::vector<Human> humans;
     Planet planet;
-
+    void add_person(Human human);
+    void delete_random_person();
 public:
     World();
     World(std::vector<Human> humans, Planet planet);
     World(std::vector<Human> humans);
-    void start_day();
-    void add_person(Human human);
-    void delete_random_person();
+    bool start_day();
     void set_humans(std::vector<Human> humans);
+    std::vector<Human> get_humans() const;
 };

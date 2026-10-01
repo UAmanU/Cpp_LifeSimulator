@@ -9,6 +9,6 @@
 
 // STL Includes
 
-bool login_reg_form();
 int choose_action();
-std::string reg_form();
+std::string name_form();
+int gender_form();
