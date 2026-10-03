@@ -35,7 +35,7 @@ bool StorageManager::add_player(const Human &player)
 
     if (is_data_valid(raw_data))
     {
-        result = storage->add_data(raw_data);
+        result = storage->add_data(std::move(raw_data));
     }
     else
     {
