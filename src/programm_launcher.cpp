@@ -15,10 +15,11 @@ bool ProgrammLauncher::is_user_registered()
     ConfigManager config_manager;
     return (config_manager.get_id() == -1 ? false : true);
 }
-void ProgrammLauncher::save()
+bool ProgrammLauncher::save()
 {
     std::vector<Human> humans = world->get_humans();
     bool result = storage_manager->update_all_players(std::move(humans));
+    return result;
 }
 Human ProgrammLauncher::reg_user() const
 {
@@ -49,6 +50,7 @@ void ProgrammLauncher::start()
     {
         need_to_continue = world->start_day();
     }
-    save();
+    bool result = save();
+    print_datasave_result(result);
     goodbye();
 }
