@@ -24,7 +24,7 @@ public:
     ~StorageManager() = default;
     void prepare_database();
     void reset_database();
-    bool add_player(const Human &player);
+    int add_player(const Human &player);
     std::vector<Human> get_all_players();
     Human get_player(int player_id);
     void delete_player(int player_id);

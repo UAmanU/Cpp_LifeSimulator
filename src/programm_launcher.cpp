@@ -39,9 +39,9 @@ void ProgrammLauncher::start()
     if (!(is_registered))
     {
         Human player = reg_user();
-        storage_manager->add_player(player);
+        int id = storage_manager->add_player(player);
         ConfigManager config_manager;
-        config_manager.set_new_id(std::get<int>(player.get_stat(HumanStats::id)));
+        config_manager.set_new_id(id);
     }
     std::vector<Human> humans = storage_manager->get_all_players();
     world->set_humans(std::move(humans));

@@ -29,4 +29,5 @@ public:
     player_data get_player_data(int id) override;
     bool update_data(int id, const player_data player_stats);
     void close_database();
+    int get_last_id() override;
 };

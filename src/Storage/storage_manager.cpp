@@ -28,20 +28,21 @@ std::vector<Human> StorageManager::get_all_players()
     }
     return all_players;
 }
-bool StorageManager::add_player(const Human &player)
+int StorageManager::add_player(const Human &player)
 {
-    bool result = false;
+    int id = -1;
     player_data raw_data = convert_human_toData(player);
 
     if (is_data_valid(raw_data))
     {
-        result = storage->add_data(std::move(raw_data));
+        storage->add_data(std::move(raw_data));
+        id = storage->get_last_id();
     }
     else
     {
         throw Errors::StorageManagerError("Illegal data to put in database.");
     }
-    return result;
+    return id;
 }
 Human StorageManager::get_player(int player_id)
 {
@@ -96,10 +97,10 @@ Human StorageManager::convert_data_toHuman(player_data &data) const
 player_data StorageManager::convert_human_toData(const Human &human) const
 {
     player_data data;
-    data[HumanStats::id] = human.get_stat(HumanStats::id);
-    data[HumanStats::name] = human.get_stat(HumanStats::name);
-    data[HumanStats::age] = human.get_stat(HumanStats::age);
-    data[HumanStats::money] = human.get_stat(HumanStats::money);
+    data[HumanStats::id] = std::get<int>(human.get_stat(HumanStats::id));
+    data[HumanStats::name] = std::get<std::string>(human.get_stat(HumanStats::name));
+    data[HumanStats::age] = std::get<int>(human.get_stat(HumanStats::age));
+    data[HumanStats::money] = std::get<int>(human.get_stat(HumanStats::money));
     data[HumanStats::gender] = std::get<int>(human.get_stat(HumanStats::gender));
     data[HumanStats::job] = convert_jobType_toString(std::get<Job>(human.get_stat(HumanStats::job)).job_type);
     data[HumanStats::salary] = std::get<Job>(human.get_stat(HumanStats::job)).salary;
