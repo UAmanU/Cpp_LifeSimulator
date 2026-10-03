@@ -37,7 +37,7 @@ void World::delete_random_person()
 
     return;
 }
-Gender World::get_planet() const
+Planet World::get_planet() const
 {
     return planet;
 }

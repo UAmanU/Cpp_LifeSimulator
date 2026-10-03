@@ -2,7 +2,7 @@
 
 // Includes
 #include "human/human.h"
-#include "planet.h"
+#include "world/planet.h"
 // Includes
 
 // STL Includes

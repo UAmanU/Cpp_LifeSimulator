@@ -19,7 +19,7 @@ launches the code
 
 ProgrammLauncher
 
-takes data from StorageManager 
+takes data from StorageManager , catches errors and calls GUI functions.
 
 ↓
 
@@ -48,12 +48,17 @@ __________________________________
 Cpp_LifeSimulator[
         include[
             programm_launcher.h
-            gender.h
-            human.h
-            planet.h
-            world.h
+            human[
+                gender.h
+                human.h
+            ]
+            world[
+                planet.h
+                world.h
+            ]
             errors.h
             Storage[
+                config_manager.h
                 sqlite3_storage.h
                 storage.h
                 storage_manager.h
@@ -73,18 +78,26 @@ Cpp_LifeSimulator[
         ]
         src[
             main.cpp
-            human.cpp
-            UI.cpp
+            human[
+                human.cpp
+                gender.cpp
+            ]
+            world[
+                world.cpp
+                planet.cpp
+            ]
+            GUI[
+                display_handler.cpp
+                input_handler.cpp
+            ]
             Storage[
+                config_manager.cpp
                 sqlite3_storage.cpp
                 storage_manager.cpp
             ]
             Job[
                 job.cpp
-            ]
-            GUI[
-                input_handler.cpp
-                display_handler.cpp
+                job_types.cpp
             ]
         ]
         .gitignore 
@@ -98,11 +111,11 @@ __________________________________
 
 players.db:
 
-    |------------------------------------------------------|
-    |       | id | name | age  | money  | gender |  job    |
-    |------------------------------------------------------|
-    |player |    |      |      |        |        |         |
-    |------------------------------------------------------|
+    |---------------------------------------------------------------|
+    |       | id | name | age  | money  | gender |  job    | salary |
+    |---------------------------------------------------------------|
+    |player |    |      |      |        |        |         |        |
+    |---------------------------------------------------------------|
 
     id = INTEGER PRIMARY KEY AUTOINCREMENT
 
@@ -113,6 +126,8 @@ players.db:
     gender = INTEGER (0 - human, 1 - woman)
 
     job = TEXT NOT NULL
+    
+    salary = INTEGER
 __________________________________
 
 
@@ -120,7 +135,7 @@ __________________________________
 Data format for Storage 
 ___________________________________
 
-player_data = std::variant<int,std::string>;
+raw_data = std::variant<int,std::string>;
 player_data_types = std::map<HumanStats, player_data>; (id,name,age,money,gender);
 
 
