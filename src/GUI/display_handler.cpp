@@ -28,6 +28,12 @@ void print_genders()
         std::cout << static_cast<int>(gender) << ": " << convert_gender_toString(gender) << "\n";
     }
 }
+void print_world_stats(const World &world)
+{
+    std::cout << "World stats:\n";
+    std::cout << "Planet: " << get_planet_name(world.get_planet()) << "\n";
+    std::cout << "Number of humans: " << world.get_humans().size() << "\n";
+}
 void print_character_stats(const Human &human)
 {
     std::string name = std::get<std::string>(human.get_stat(HumanStats::name));
