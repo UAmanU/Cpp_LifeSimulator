@@ -19,3 +19,16 @@ Gender convert_int_toGender(int num)
     }
     return;
 }
+std::string convert_gender_toString(Gender gender)
+{
+    switch (gender)
+    {
+    case Gender::Male:
+        return "Male";
+    case Gender::Female:
+        return "Female";
+    case Gender::NA:
+        return "NA";
+    }
+    return "";
+}
