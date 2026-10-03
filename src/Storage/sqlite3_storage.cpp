@@ -7,9 +7,7 @@
 
 // STL Includes
 
-using sql_storage = SQLITE3_Storage;
-
-void sql_storage::create_table()
+void SQLITE3_Storage::create_table()
 {
     int result = sqlite3_open("players.db", &db);
     if (result != SQLITE_OK)
@@ -23,7 +21,7 @@ void sql_storage::create_table()
         throw Errors::StorageError("Cannot executive a player database.");
     }
 }
-std::vector<int> sql_storage::get_all_id()
+std::vector<int> SQLITE3_Storage::get_all_id()
 {
     std::vector<int> all_ids;
     const char *select_id_command = "SELECT id FROM players";
@@ -44,7 +42,7 @@ std::vector<int> sql_storage::get_all_id()
     }
     return all_ids;
 }
-bool sql_storage::add_data(player_data player_stats)
+bool SQLITE3_Storage::add_data(player_data player_stats)
 {
     const char *insert_command = "INSERT INTO players(name, age, money,gender, job, salary) VALUES(?,?,?,?,?,?)";
     sqlite3_stmt *stmt = nullptr;

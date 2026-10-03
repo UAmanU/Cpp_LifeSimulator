@@ -27,7 +27,7 @@ public:
     bool delete_data(int id) override;
     bool clear_database() override;
     player_data get_player_data(int id) override;
-    bool update_data(int id, const player_data player_stats);
+    bool update_data(int id, const player_data player_stats) override;
     void close_database();
     int get_last_id() override;
 };
