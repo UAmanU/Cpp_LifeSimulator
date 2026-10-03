@@ -1,7 +1,6 @@
 // Includes
 #include "programm_launcher.h"
-#include "input_handler.h"
-#include "config_manager.h"
+#include "include/GUI/input_handler.h"
 #include "include/GUI/display_handler.h"
 // Includes
 
@@ -12,8 +11,7 @@
 ProgrammLauncher::ProgrammLauncher(std::unique_ptr<StorageManager> storage_manager, std::unique_ptr<World> world) : storage_manager(std::move(storage_manager)), world(std::move(world)) {};
 bool ProgrammLauncher::is_user_registered()
 {
-    ConfigManager config_manager;
-    return (config_manager.get_id() == -1 ? false : true);
+    return config_manager.get_id() != -1;
 }
 bool ProgrammLauncher::save()
 {
@@ -21,7 +19,7 @@ bool ProgrammLauncher::save()
     bool result = storage_manager->update_all_players(std::move(humans));
     return result;
 }
-Human ProgrammLauncher::reg_user() const
+Human ProgrammLauncher::create_new_human() const
 {
     std::string name = name_form();
     int gender_int = gender_form();
@@ -32,17 +30,21 @@ Human ProgrammLauncher::reg_user() const
     Human player(-1, 0, name, gender, 0, job);
     return player;
 }
+void ProgrammLauncher::register_human(Human &human)
+{
+    int id = storage_manager->add_player(human);
+    human.set_id(id);
+}
 void ProgrammLauncher::start()
 {
     bool need_to_continue = true;
     greeting();
-    bool is_registered = is_user_registered();
-    if (!(is_registered))
+
+    if (!(is_user_registered()))
     {
-        Human player = reg_user();
-        int id = storage_manager->add_player(player);
-        ConfigManager config_manager;
-        config_manager.set_new_id(id);
+        Human human = create_new_human();
+        register_human(human);
+        config_manager.set_new_id(std::get<int>(human.get_stat(HumanStats::id)));
     }
     std::vector<Human> humans = storage_manager->get_all_players();
     world->set_humans(std::move(humans));
