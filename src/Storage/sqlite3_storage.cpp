@@ -195,3 +195,24 @@ void SQLITE3_Storage::close_database()
         sqlite3_close(db);
     }
 }
+int SQLITE3_Storage::get_last_id()
+{
+    const char *select_last_id_command = "SELECT id FROM players ORDER BY id DESC LIMIT 1";
+    sqlite3_stmt *stmt = nullptr;
+
+    int result = sqlite3_prepare_v2(db, select_last_id_command, -1, &stmt, nullptr);
+    if (result != SQLITE_OK)
+    {
+        sqlite3_finalize(stmt);
+        throw Errors::StorageError("Cannot select data from players database.");
+    }
+
+    int last_id = -1;
+    if (sqlite3_step(stmt) == SQLITE_ROW)
+    {
+        last_id = sqlite3_column_int(stmt, 0);
+    }
+
+    sqlite3_finalize(stmt);
+    return last_id;
+}
