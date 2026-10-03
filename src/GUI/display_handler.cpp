@@ -5,7 +5,7 @@
 
 // STL Includes
 #include <iostream>
-
+#include <vector>
 // STL Includes
 
 void greeting()
@@ -19,6 +19,14 @@ void goodbye()
 void print_error(std::string msg)
 {
     std::cout << "Oops! " + msg << "\n";
+}
+void print_genders()
+{
+    std::vector<Gender> genders = {Gender::Male, Gender::Female, Gender::NA};
+    for (const auto &gender : genders)
+    {
+        std::cout << static_cast<int>(gender) << ": " << convert_gender_toString(gender) << "\n";
+    }
 }
 void print_character_stats(const Human &human)
 {
