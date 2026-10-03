@@ -1,7 +1,7 @@
 #pragma once
 
 // Includes
-#include "human.h"
+#include "human/human.h"
 #include "planet.h"
 // Includes
 
@@ -17,11 +17,13 @@ private:
     Planet planet;
     void add_person(Human human);
     void delete_random_person();
+
 public:
     World();
     World(std::vector<Human> humans, Planet planet);
-    World(std::vector<Human> humans);
+
     bool start_day();
     void set_humans(std::vector<Human> humans);
     std::vector<Human> get_humans() const;
+    Planet get_planet() const;
 };
