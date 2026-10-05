@@ -2,6 +2,7 @@
 #include "programm_launcher.h"
 #include "include/GUI/input_handler.h"
 #include "include/GUI/display_handler.h"
+#include "include/errors.h"
 // Includes
 
 // STL Includes
@@ -42,9 +43,19 @@ void ProgrammLauncher::start()
 
     if (!(is_user_registered()))
     {
-        Human human = create_new_human();
-        register_human(human);
-        config_manager.set_new_id(std::get<int>(human.get_stat(HumanStats::id)));
+        while (true)
+        {
+            try
+            {
+                Human human = create_new_human();
+                register_human(human);
+                config_manager.set_new_id(std::get<int>(human.get_stat(HumanStats::id)));
+            }
+            catch (const Errors::InputError &e)
+            {
+                print_error(e.what());
+            }
+        }
     }
     std::vector<Human> humans = storage_manager->get_all_players();
     world->set_humans(std::move(humans));

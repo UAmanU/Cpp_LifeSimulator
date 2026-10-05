@@ -16,7 +16,7 @@ void goodbye()
 {
     std::cout << "Bye bye!\n";
 }
-void print_error(std::string msg)
+void print_error(const std::string &msg)
 {
     std::cout << "Oops! " + msg << "\n";
 }
