@@ -25,7 +25,6 @@ std::vector<int> SQLITE3_Storage::get_all_id()
 {
     std::vector<int> all_ids;
     const char *select_id_command = "SELECT id FROM players";
-    sqlite3_stmt *stmt = nullptr;
 
     int result = sqlite3_prepare_v2(db, select_id_command, -1, &stmt, nullptr);
     if (result != SQLITE_OK)
@@ -45,7 +44,6 @@ std::vector<int> SQLITE3_Storage::get_all_id()
 bool SQLITE3_Storage::add_data(player_data player_stats)
 {
     const char *insert_command = "INSERT INTO players(name, age, money,gender, job, salary) VALUES(?,?,?,?,?,?)";
-    sqlite3_stmt *stmt = nullptr;
 
     std::string player_name = std::get<std::string>(player_stats[HumanStats::name]);
     int player_age = std::get<int>(player_stats[HumanStats::age]);
@@ -86,7 +84,6 @@ bool SQLITE3_Storage::add_data(player_data player_stats)
 bool SQLITE3_Storage::delete_data(int id)
 {
     const char *delete_command = "DELETE FROM players WHERE id = ?";
-    sqlite3_stmt *stmt = nullptr;
 
     int result = sqlite3_prepare_v2(db, delete_command, -1, &stmt, nullptr);
     if (result != SQLITE_OK)
@@ -122,7 +119,6 @@ bool SQLITE3_Storage::clear_database()
 player_data SQLITE3_Storage::get_player_data(int id)
 {
     std::string raw_command = "SELECT name,age,money,gender,job,salary FROM players WHERE id = ?";
-    sqlite3_stmt *stmt = nullptr;
 
     int result = sqlite3_prepare_v2(db, raw_command.c_str(), -1, &stmt, nullptr);
     if (result != SQLITE_OK)
@@ -165,7 +161,6 @@ player_data SQLITE3_Storage::get_player_data(int id)
 bool SQLITE3_Storage::update_data(int id, player_data data)
 {
     std::string raw_command = "UPDATE players SET name = ?, age = ?, money = ?, gender = ?, job = ?, salary = ? WHERE id = ?";
-    sqlite3_stmt *stmt = nullptr;
 
     int result = sqlite3_prepare_v2(db, raw_command.c_str(), -1, &stmt, nullptr);
     if (result != SQLITE_OK)
@@ -196,7 +191,6 @@ void SQLITE3_Storage::close_database()
 int SQLITE3_Storage::get_last_id()
 {
     const char *select_last_id_command = "SELECT id FROM players ORDER BY id DESC LIMIT 1";
-    sqlite3_stmt *stmt = nullptr;
 
     int result = sqlite3_prepare_v2(db, select_last_id_command, -1, &stmt, nullptr);
     if (result != SQLITE_OK)
