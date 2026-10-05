@@ -18,6 +18,7 @@ bool ProgrammLauncher::save()
 {
     std::vector<Human> humans = world->get_humans();
     bool result = storage_manager->update_all_players(std::move(humans));
+    config_manager.load_id();
     return result;
 }
 Human ProgrammLauncher::create_new_human() const
@@ -40,7 +41,8 @@ void ProgrammLauncher::start()
 {
     bool need_to_continue = true;
     greeting();
-
+    config_manager.load_id();
+    int user_id = config_manager.get_id();
     if (!(is_user_registered()))
     {
         while (true)
@@ -49,7 +51,8 @@ void ProgrammLauncher::start()
             {
                 Human human = create_new_human();
                 register_human(human);
-                config_manager.set_new_id(std::get<int>(human.get_stat(HumanStats::id)));
+                user_id = std::get<int>(human.get_stat(HumanStats::id));
+                config_manager.set_new_id(user_id);
             }
             catch (const Errors::InputError &e)
             {
@@ -61,7 +64,13 @@ void ProgrammLauncher::start()
     world->set_humans(std::move(humans));
     while (need_to_continue)
     {
-        need_to_continue = world->start_day();
+        // Game loop
+        int choice = choose_action();
+        world->human_action(convert_int_toHumanActions(choice), user_id);
+        world->human_action();
+        world->end_day();
+        need_to_continue = continue_form();
+        // Game loop
     }
     bool result = save();
     print_datasave_result(result);

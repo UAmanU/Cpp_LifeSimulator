@@ -23,19 +23,11 @@ bool World::start_day()
 
     // Code
 
-    return 0;
+    return true;
 }
 void World::add_person(Human human)
 {
     humans.push_back(std::move(human));
-}
-void World::delete_random_person()
-{
-    // Code
-
-    // Code
-
-    return;
 }
 Planet World::get_planet() const
 {

@@ -3,6 +3,7 @@
 // Includes
 #include "human/human.h"
 #include "world/planet.h"
+#include "human/action.h"
 // Includes
 
 // STL Includes
@@ -18,13 +19,13 @@ private:
     std::vector<Human> humans;
     Planet planet;
     void add_person(Human human);
-    void delete_random_person();
+    auto choose_random_human() const;
 
 public:
     World();
     World(std::vector<Human> humans, Planet planet);
-
-    bool start_day();
+    void human_action(HumanActions action = HumanActions::NA, int id = -1);
+    bool end_day();
     void set_humans(std::vector<Human> humans);
     std::vector<Human> get_humans() const;
     Planet get_planet() const;

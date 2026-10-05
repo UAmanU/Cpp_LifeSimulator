@@ -15,5 +15,6 @@ Their functions are usually called by ProgrammLauncher class (which is declared 
 
 void clear_cin();
 int choose_action();
+bool continue_form();
 std::string name_form();
 int gender_form();
