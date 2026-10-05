@@ -20,6 +20,7 @@ class SQLITE3_Storage : public IStorage
 {
 private:
     sqlite3 *db = nullptr;
+    sqlite3_stmt *stmt = nullptr;
 
 public:
     SQLITE3_Storage() = default;
