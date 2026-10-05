@@ -9,6 +9,11 @@
 #include <vector>
 // STL Includes
 
+/*StorageManager controls the Storage and makes it actually safer.
+For example, there's a new player Alex. StorageManager will check Alex data's validality,
+convert human's stats to player_data type (which is declared in include/Storage/storage.h) and call Storage's method for adding a new player.
+StorageManager makes sense because Storage shouldn't know about business logic, it needs to only work with database and raw data.*/
+
 class StorageManager
 {
 private:

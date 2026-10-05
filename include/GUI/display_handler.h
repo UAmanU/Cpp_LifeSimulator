@@ -10,6 +10,8 @@
 
 // STL Includes
 
+/*Display handler is like a set of high-abstract level functions for controlling the std::cout thread.
+It shouldn't know about Database, business logic and its functions are usually called by ProgrammLauncher class.*/
 void greeting();
 void goodbye();
 void print_error(std::string msg);

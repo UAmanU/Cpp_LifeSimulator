@@ -8,6 +8,10 @@
 
 // STL Includes
 
+/*Errors namespace contains all local errors in this project.
+They make sense when there's a unvalid data or database connection is failed.
+Because we can't throw STL errors for these situations, it's less readable and uncorrect.*/
+
 namespace Errors
 {
     class StorageError : public std::runtime_error

@@ -11,6 +11,8 @@
 
 // STL Includes
 
+/*This is the ProgrammLauncher class. it owns the Database part, business logic and GUI.
+It means programm_launcher doesn't call SQL .db or prints the statements by itself, it calls functions that will do this work. */
 class ProgrammLauncher
 {
 private:

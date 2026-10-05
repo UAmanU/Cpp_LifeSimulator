@@ -8,6 +8,11 @@
 
 // STL Includes
 
+
+/* ConfigManager - is a simple class and current_player_id.txt manager.
+ This file contains the last user's id in database.
+ It makes sense for checking the last user's id.*/
+ 
 class ConfigManager
 {
 private:

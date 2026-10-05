@@ -1,3 +1,11 @@
+_________________________________
+
+ALL comments for explanation are written in declaration files (and main.cpp) of each class/struct/enum class and etc. object!
+
+_________________________________
+
+
+
 OWNERSHIP
 _________________________________
 
@@ -135,8 +143,8 @@ __________________________________
 Data format for Storage 
 ___________________________________
 
-raw_data = std::variant<int,std::string>;
-player_data_types = std::map<HumanStats, player_data>; (id,name,age,money,gender);
+    raw_data = std::variant<int,std::string>;
+    player_data_types = std::map<HumanStats, player_data>; (id,name,age,money,gender);
 
 
 ___________________________________
@@ -145,8 +153,8 @@ ___________________________________
 Job System
 ___________________________________
 
-struct Job;
-enum class JobType;
+    struct Job;
+    enum class JobType;
 
 Warning: Job isn't a complex object which needs to be realised in 100-200 lines of code.
 But there's a folder named Job in both src and include folders for better updates.

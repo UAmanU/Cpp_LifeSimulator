@@ -13,6 +13,9 @@
 #include <vector>
 // STL Includes
 
+/*SQLITE3_STORAGE is a IStorage's child class, which uses SQLITE3 API for working with database.
+SQLITE3_STORAGE owns an pointer to sqlite3 db.*/
+
 class SQLITE3_Storage : public IStorage
 {
 private:

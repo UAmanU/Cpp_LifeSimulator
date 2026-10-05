@@ -10,6 +10,8 @@
 
 // STL Includes
 
+/*World class represents the game world, containing humans and a planet.
+It provides methods to manage the humans and simulate a day in the world.*/
 class World
 {
 private:

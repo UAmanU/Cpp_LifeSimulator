@@ -8,6 +8,11 @@
 
 // STL Includes
 
+/*Job is a struct without any methods.
+It contains JobType , int salary and int energy_per_day.
+Job is usually owned by class Human (which is declared in include/Human/human.h).
+Job struct makes sense for adding money to human and spending his energy.*/
+
 struct Job
 {
     JobType job_type;

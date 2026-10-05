@@ -12,6 +12,11 @@
 
 // STL Includes
 
+/*IStorage - is an abstract class for Database part.
+IStorage's child classes are owned by StorageManager class.
+So for data transformation beetween storage and StorageManager, there're 2 using statements.
+As you can see, Storage returns and takes std::map with player's data for connecting with the Database.*/
+
 using raw_data_types = std::variant<std::string, int>;
 using player_data = std::map<HumanStats, raw_data_types>;
 class IStorage

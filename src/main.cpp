@@ -7,6 +7,11 @@
 
 // STL Includes
 
+/*
+src/main.cpp launches the code : creates a smart pointers for storage_manager, world and programm_launcher.
+The World and storage_manager are owned by programm launcher.
+Then, main.cpp calls programm_launcher::start() method , which is like the core of programm.
+*/
 int main()
 {
     // Code
