@@ -1,8 +1,8 @@
 #pragma once
 
 // Includes
-#include "human/human.h"
-#include "world/world.h"
+#include "Human/human.h"
+#include "World/world.h"
 // Includes
 
 // STL Includes
