@@ -20,13 +20,29 @@ void print_error(const std::string &msg)
 {
     std::cout << "Oops! " + msg << "\n";
 }
-void print_genders()
+void print_all_jobs(const std::vector<std::string> &jobs)
 {
-    std::vector<Gender> genders = {Gender::Male, Gender::Female, Gender::NA};
-    for (const auto &gender : genders)
+    std::cout << "Choose your job:\n";
+    print_string_vector(jobs);
+}
+void print_string_vector(const std::vector<std::string> &vector)
+{
+
+    for (int index = 1; index < vector.size() + 1; index++)
     {
-        std::cout << static_cast<int>(gender) << ": " << convert_gender_toString(gender) << "\n";
+        std::string string = vector[index - 1];
+        std::cout << std::to_string(index) + ": " + string + ";\n";
     }
+}
+void print_action_choices(const std::vector<std::string> &actions)
+{
+    std::cout << "Choose your action:\n";
+    print_string_vector(actions);
+}
+void print_all_genders(const std::vector<std::string> &genders)
+{
+    std::cout << "What Gender do you want to be?\n";
+    print_string_vector(genders);
 }
 void print_world_stats(const World &world)
 {
@@ -49,17 +65,23 @@ void print_character_stats(const Human &human)
     std::cout << "Job: " << job_name << "\n";
     std::cout << "Salary: " << salary << "\n";
 }
-void print_work_message(const Human &human)
+void print_action_message(const Human &human, HumanActions action)
 {
     std::string name = std::get<std::string>(human.get_stat(HumanStats::name));
-    std::string job_name = convert_jobType_toString(std::get<Job>(human.get_stat(HumanStats::job)).job_type);
-    std::cout << name + " is working as a " + job_name + ". Current energy after work: " << std::get<Job>(human.get_stat(HumanStats::job)).energy_per_day << "\n";
+    std::string energy_state = "Current energy: " + std::to_string(std::get<int>(human.get_stat(HumanStats::energy)));
+    std::string action_state;
+    if (action == HumanActions::work)
+    {
+        std::string money = std::to_string(std::get<int>(human.get_stat(HumanStats::money)));
+        action_state = name + " was working all day; his current money is: " + money;
+    }
+    else if (action == HumanActions::sleep)
+    {
+        action_state = name + "slept;";
+    }
+    std::cout << action_state + energy_state + "\n";
 }
-void print_sleep_message(const Human &human)
-{
-    std::string name = std::get<std::string>(human.get_stat(HumanStats::name));
-    std::cout << name + " is sleeping. Current energy after sleep: " << std::get<Job>(human.get_stat(HumanStats::job)).energy_per_day << "\n";
-}
+
 void print_datasave_result(bool result)
 {
     std::cout << (result ? "Data saved successfully." : "Data saving failed.") << "\n";

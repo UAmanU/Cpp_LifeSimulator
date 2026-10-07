@@ -13,9 +13,9 @@ std::vector<Human> World::get_humans() const
 {
     return humans;
 }
-void World::set_humans(std::vector<Human> humans)
+void World::set_humans(std::vector<Human> new_humans)
 {
-    humans = std::move(humans);
+    humans = std::move(new_humans);
 }
 
 void World::add_person(Human human)

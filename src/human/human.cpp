@@ -35,6 +35,8 @@ player_data_types Human::get_stat(HumanStats stat) const
         return money;
     case HumanStats::salary:
         return job.salary;
+    case HumanStats::energy:
+        return energy;
     }
     throw Errors::InvalidDataError("Invalid stat requested.");
 }

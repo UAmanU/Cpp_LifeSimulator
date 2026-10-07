@@ -10,7 +10,7 @@
 // STL Includes
 
 /*action.h file isn't that useful for MVP but it will make the code more readable.*/
-enum class HumanActions
+enum class HumanActions : int
 {
     work = 1,
     sleep = 2,

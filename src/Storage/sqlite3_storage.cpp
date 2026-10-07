@@ -33,7 +33,6 @@ std::vector<int> SQLITE3_Storage::get_all_id()
         throw Errors::StorageError("Cannot select data from players database.");
     }
 
-    sqlite3_step(stmt);
     while (sqlite3_step(stmt) == SQLITE_ROW)
     {
         int id = sqlite3_column_int(stmt, 0);
@@ -155,6 +154,7 @@ player_data SQLITE3_Storage::get_player_data(int id)
     data[HumanStats::gender] = gender;
     data[HumanStats::job] = job;
     data[HumanStats::salary] = salary;
+    data[HumanStats::id] = id;
     sqlite3_finalize(stmt);
     return data;
 }
@@ -176,10 +176,10 @@ bool SQLITE3_Storage::update_data(int id, player_data data)
     sqlite3_bind_text(stmt, 5, std::get<std::string>(data[HumanStats::job]).c_str(), -1, SQLITE_TRANSIENT);
     sqlite3_bind_int(stmt, 6, std::get<int>(data[HumanStats::salary]));
     sqlite3_bind_int(stmt, 7, id);
-    sqlite3_step(stmt);
+    bool result = sqlite3_step(stmt) == SQLITE_DONE;
 
     sqlite3_finalize(stmt);
-    return true;
+    return result;
 }
 void SQLITE3_Storage::close_database()
 {

@@ -23,7 +23,8 @@ enum class HumanStats
     gender,
     money,
     job,
-    salary
+    salary,
+    energy
 };
 using player_data_types = std::variant<int, std::string, Gender, Job>;
 class Human

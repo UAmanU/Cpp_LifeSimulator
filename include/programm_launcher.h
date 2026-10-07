@@ -23,6 +23,7 @@ private:
     bool is_user_registered();
     Human create_new_human() const;
     void register_human(Human &human);
+    Job job_form() const;
 
 public:
     ProgrammLauncher(std::unique_ptr<StorageManager> storage_manager, std::unique_ptr<World> world);

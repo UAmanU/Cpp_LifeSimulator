@@ -21,15 +21,29 @@ bool ProgrammLauncher::save()
     config_manager.load_id();
     return result;
 }
+Job ProgrammLauncher::job_form() const
+{
+    std::vector<std::string> jobs = get_all_jobNames();
+    std::vector<JobType> jobs_types;
+    jobs_types.reserve(6);
+    for (const std::string &job : jobs)
+    {
+        jobs_types.push_back(convert_string_toJobType(job));
+    }
+    print_all_jobs(jobs);
+    int choice = choose_job();
+    JobType chosen_jobType = jobs_types[choice];
+    return Job(static_cast<int>(chosen_jobType), chosen_jobType);
+}
 Human ProgrammLauncher::create_new_human() const
 {
     std::string name = name_form();
     int gender_int = gender_form();
     Gender gender = convert_int_toGender(gender_int);
-    JobType job_type = JobType::NA;
+
     int salary = 0;
-    Job job = Job(salary, job_type);
-    Human player(-1, 0, name, gender, job);
+    Job job = job_form();
+    Human player(-1, 0, name, gender, std::move(job));
     return player;
 }
 void ProgrammLauncher::register_human(Human &human)
@@ -63,12 +77,21 @@ void ProgrammLauncher::start()
     }
     std::vector<Human> humans = storage_manager->get_all_players();
     world->set_humans(std::move(humans));
+    print_world_stats(*world);
+    Human current_human;
+    HumanActions current_action;
+    std::vector<std::string> actions = {"work", "sleep"};
     while (need_to_continue)
     {
         // Game loop
+        print_action_choices(actions);
         int choice = choose_action();
-        world->human_action(convert_int_toHumanActions(choice), user_id);
-        world->random_human_action();
+        current_action = convert_int_toHumanActions(choice);
+        current_human = world->human_action(current_action, user_id);
+        print_action_message(current_human, current_action);
+        current_action = world->choose_random_action();
+        current_human = world->human_action(current_action);
+        print_action_message(current_human, current_action);
         world->end_day();
         need_to_continue = continue_form();
         // Game loop

@@ -1,5 +1,6 @@
 // Includes
 #include "Include/Human/gender.h"
+#include "Include/errors.h"
 // Includes
 
 // STL Includes
@@ -17,7 +18,7 @@ Gender convert_int_toGender(int num)
     case 2:
         return Gender::NA;
     }
-    return;
+    throw Errors::InvalidDataError("There's no Gender with "+std::to_string(num)+" id.");
 }
 std::string convert_gender_toString(Gender gender)
 {
@@ -30,5 +31,5 @@ std::string convert_gender_toString(Gender gender)
     case Gender::NA:
         return "NA";
     }
-    return "";
+    throw Errors::InvalidDataError("I don't know this Gender type.");
 }

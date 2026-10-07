@@ -14,7 +14,7 @@ Gender-type objects are usually owned by class Human-type objects (class Human i
 Gender::NA is used as a default construction. For example, we created an Human-type object , but we didn't send a Gender value into a constructor.
 In this case, Human::gender will be set as a Gender::NA.*/
 
-enum class Gender
+enum class Gender : int
 {
     Male = 0,
     Female = 1,

@@ -42,3 +42,7 @@ std::string convert_jobType_toString(JobType job_type)
     }
     return "NA";
 }
+std::vector<std::string> get_all_jobNames()
+{
+    return {"cashier", "driver", "cook", "counsellor", "medic", "waiter"};
+}
