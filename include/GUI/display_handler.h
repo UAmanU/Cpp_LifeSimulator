@@ -15,7 +15,8 @@ It shouldn't know about Database, business logic and its functions are usually c
 void greeting();
 void goodbye();
 void print_error(const std::string &msg);
-void print_genders();
+void print_all_genders(const std::vector<std::string> &genders);
+void print_all_jobs(const std::vector<std::string> &jobs);
 void print_world_stats(const World &world);
 void print_character_stats(const Human &human);
 void print_work_message(const Human &human);
