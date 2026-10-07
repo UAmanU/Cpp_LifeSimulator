@@ -35,10 +35,10 @@ protected:
     Gender gender;
     int money;
     Job job;
-    int energy;
+    int energy = 100;
 
 public:
-    Human(int id, int age, std::string name, Gender gender, int money = 0, Job job);
+    Human(int id, int age, std::string name, Gender gender, Job job, int money = 0);
     Human();
     virtual ~Human() = default;
     virtual void work();

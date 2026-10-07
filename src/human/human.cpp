@@ -9,7 +9,7 @@
 // STL Includes
 
 Human::Human() : age(0), gender(Gender::NA), job(Job()) {};
-Human::Human(int id, int age, std::string name, Gender gender, int money, Job job) : id(id), age(age), name(std::move(name)), gender(gender), money(money), job(std::move(job)) {};
+Human::Human(int id, int age, std::string name, Gender gender, Job job, int money) : id(id), age(age), name(std::move(name)), gender(gender), money(money), job(std::move(job)) {};
 void Human::work()
 {
     int new_energy = energy - job.energy_per_day;
@@ -23,18 +23,18 @@ void Human::sleep()
 }
 player_data_types Human::get_stat(HumanStats stat) const
 {
-    std::unordered_map<HumanStats, player_data_types> stats_map = {
-        {HumanStats::id, id},
-        {HumanStats::age, age},
-        {HumanStats::name, name},
-        {HumanStats::gender, gender},
-        {HumanStats::money, money},
-        {HumanStats::job, job},
-        {HumanStats::salary, job.salary}};
-    auto it = stats_map.find(stat);
-    if (it != stats_map.end())
+    switch (stat)
     {
-        return it->second;
+    case HumanStats::id:
+        return id;
+    case HumanStats::name:
+        return name;
+    case HumanStats::age:
+        return age;
+    case HumanStats::money:
+        return money;
+    case HumanStats::salary:
+        return job.salary;
     }
     throw Errors::InvalidDataError("Invalid stat requested.");
 }
