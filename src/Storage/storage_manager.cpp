@@ -92,7 +92,7 @@ Human StorageManager::convert_data_toHuman(player_data &data) const
     JobType job_type = convert_string_toJobType(std::get<std::string>(data[HumanStats::job]));
     int salary = std::get<int>(data[HumanStats::salary]);
     Job player_job = Job(salary, job_type);
-    return Human(player_id, player_age, player_name, player_gender, player_money, player_job);
+    return Human(player_id, player_age, player_name, player_gender, player_job, player_money);
 }
 player_data StorageManager::convert_human_toData(const Human &human) const
 {

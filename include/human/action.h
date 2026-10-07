@@ -16,5 +16,4 @@ enum class HumanActions
     sleep = 2,
     NA = 3,
 };
-consteval std::map<int, HumanActions> int_HumanActions_map = {{static_cast<int>(HumanActions::work), HumanActions::work}, {static_cast<int>(HumanActions::sleep), HumanActions::sleep}};
 HumanActions convert_int_toHumanActions(int number);

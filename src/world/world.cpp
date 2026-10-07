@@ -17,14 +17,7 @@ void World::set_humans(std::vector<Human> humans)
 {
     humans = std::move(humans);
 }
-bool World::start_day()
-{
-    // Code
 
-    // Code
-
-    return true;
-}
 void World::add_person(Human human)
 {
     humans.push_back(std::move(human));

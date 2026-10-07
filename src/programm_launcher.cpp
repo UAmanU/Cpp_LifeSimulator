@@ -29,7 +29,7 @@ Human ProgrammLauncher::create_new_human() const
     JobType job_type = JobType::NA;
     int salary = 0;
     Job job = Job(salary, job_type);
-    Human player(-1, 0, name, gender, 0, job);
+    Human player(-1, 0, name, gender, job);
     return player;
 }
 void ProgrammLauncher::register_human(Human &human)
@@ -53,6 +53,7 @@ void ProgrammLauncher::start()
                 register_human(human);
                 user_id = std::get<int>(human.get_stat(HumanStats::id));
                 config_manager.set_new_id(user_id);
+                break;
             }
             catch (const Errors::InputError &e)
             {
@@ -67,7 +68,7 @@ void ProgrammLauncher::start()
         // Game loop
         int choice = choose_action();
         world->human_action(convert_int_toHumanActions(choice), user_id);
-        world->human_action();
+        world->random_human_action();
         world->end_day();
         need_to_continue = continue_form();
         // Game loop
