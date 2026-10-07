@@ -1,6 +1,6 @@
 // Includes
-#include "input_handler.h"
-#include "include/errors.h"
+#include "Include/GUI/input_handler.h"
+#include "Include/errors.h"
 // Includes
 
 // STL Includes

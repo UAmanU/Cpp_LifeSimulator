@@ -1,6 +1,6 @@
 // Includes
-#include "sqlite3_storage.h"
-#include "include/errors.h"
+#include "Include/Storage/sqlite3_storage.h"
+#include "Include/errors.h"
 // Includes
 
 // STL Includes

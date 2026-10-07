@@ -1,8 +1,8 @@
 #pragma once
 
 // Includes
-#include "human/gender.h"
-#include "human/human.h"
+#include "Human/gender.h"
+#include "Human/human.h"
 // Includes
 
 // STL Includes

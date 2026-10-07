@@ -1,9 +1,9 @@
 #pragma once
 
 // Includes
-#include "world/world.h"
-#include "storage/storage_manager.h"
-#include "storage/config_manager.h"
+#include "World/world.h"
+#include "Storage/storage_manager.h"
+#include "Storage/config_manager.h"
 // Includes
 
 // STL Includes

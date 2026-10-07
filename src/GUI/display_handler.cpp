@@ -1,6 +1,6 @@
 // Includes
-#include "include/GUI/display_handler.h"
-#include "include/Job/job_types.h"
+#include "Include/GUI/display_handler.h"
+#include "Include/Job/job_types.h"
 // Includes
 
 // STL Includes

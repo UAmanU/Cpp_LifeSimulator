@@ -1,6 +1,6 @@
 // Includes
-#include "include/human/human.h"
-#include "include/errors.h"
+#include "Include/Human/human.h"
+#include "Include/errors.h"
 // Includes
 
 // STL Includes
