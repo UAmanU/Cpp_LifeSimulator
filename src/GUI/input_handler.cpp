@@ -40,7 +40,7 @@ std::string name_form()
     while (true)
     {
         std::cout << "Enter your name:\n";
-        if (std::getline(std::cin, name))
+        if (!(std::getline(std::cin, name)))
         {
             std::cout << "Only strings!\n";
             continue;

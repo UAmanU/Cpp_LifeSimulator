@@ -80,7 +80,7 @@ Human World::human_action(HumanActions action, int id)
     {
         human_ptr->sleep();
     }
-    human_ptr = nullptr;
+    return *human_ptr;
 }
 Planet World::get_planet() const
 {

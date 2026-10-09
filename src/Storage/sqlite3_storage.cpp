@@ -191,6 +191,7 @@ void SQLITE3_Storage::close_database()
     if (db)
     {
         sqlite3_finalize(stmt);
+        stmt = nullptr;
         sqlite3_close(db);
     }
 }

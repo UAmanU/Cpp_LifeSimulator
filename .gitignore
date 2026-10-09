@@ -2,3 +2,4 @@
 *.vscode/
 *current_player_id.txt
 *.db
+*build/
