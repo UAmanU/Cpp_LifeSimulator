@@ -83,18 +83,33 @@ void ProgrammLauncher::start()
     std::vector<std::string> actions = {"work", "sleep"};
     while (need_to_continue)
     {
-        // Game loop
-        print_action_choices(actions);
-        int choice = choose_action();
-        current_action = convert_int_toHumanActions(choice);
-        current_human = world->human_action(current_action, user_id);
-        print_action_message(current_human, current_action);
-        current_action = choose_random_action();
-        current_human = world->human_action(current_action);
-        print_action_message(current_human, current_action);
-        world->end_day();
-        need_to_continue = continue_form();
-        // Game loop
+        try
+        {
+            // Game loop
+            print_action_choices(actions);
+            int choice = choose_action();
+            current_action = convert_int_toHumanActions(choice);
+            current_human = world->human_action(current_action, user_id);
+            print_action_message(current_human, current_action);
+            current_action = choose_random_action();
+            current_human = world->human_action(current_action);
+            print_action_message(current_human, current_action);
+            world->end_day();
+            need_to_continue = continue_form();
+            // Game loop
+        }
+        catch (const Errors::InputError &e)
+        {
+            print_error(e.what());
+        }
+        catch (const Errors::InvalidDataError &e)
+        {
+            print_error(e.what());
+        }
+        catch (...)
+        {
+            return;
+        }
     }
     bool result = save();
     print_datasave_result(result);
