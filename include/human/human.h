@@ -44,7 +44,13 @@ public:
     virtual ~Human() = default;
     virtual void work();
     virtual void sleep();
-    player_data_types get_stat(HumanStats stat) const;
+    int get_id() const;
+    int get_age() const;
+    std::string get_name() const;
+    Gender get_gender() const;
+    int get_money() const;
+    Job get_job() const;
+    int get_energy() const;
     bool need_to_rest() const;
     void set_id(int new_id);
 };
