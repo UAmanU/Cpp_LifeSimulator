@@ -181,10 +181,10 @@ bool SQLITE3_Storage::update_data(int id, player_data data)
     sqlite3_bind_text(stmt, 5, std::get<std::string>(data[HumanStats::job]).c_str(), -1, SQLITE_TRANSIENT);
     sqlite3_bind_int(stmt, 6, std::get<int>(data[HumanStats::salary]));
     sqlite3_bind_int(stmt, 7, id);
-    bool result = sqlite3_step(stmt) == SQLITE_DONE;
+    bool success = sqlite3_step(stmt) == SQLITE_DONE;
 
     sqlite3_finalize(stmt);
-    return result;
+    return success;
 }
 void SQLITE3_Storage::close_database()
 {
