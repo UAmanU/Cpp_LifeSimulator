@@ -97,13 +97,13 @@ Human StorageManager::convert_data_toHuman(player_data &data) const
 player_data StorageManager::convert_human_toData(const Human &human) const
 {
     player_data data;
-    data[HumanStats::id] = std::get<int>(human.get_stat(HumanStats::id));
-    data[HumanStats::name] = std::get<std::string>(human.get_stat(HumanStats::name));
-    data[HumanStats::age] = std::get<int>(human.get_stat(HumanStats::age));
-    data[HumanStats::money] = std::get<int>(human.get_stat(HumanStats::money));
-    data[HumanStats::gender] = std::get<int>(human.get_stat(HumanStats::gender));
-    data[HumanStats::job] = convert_jobType_toString(std::get<Job>(human.get_stat(HumanStats::job)).job_type);
-    data[HumanStats::salary] = std::get<Job>(human.get_stat(HumanStats::job)).salary;
+    data[HumanStats::id] = human.get_id();
+    data[HumanStats::name] = human.get_name();
+    data[HumanStats::age] = human.get_age();
+    data[HumanStats::money] = human.get_money();
+    data[HumanStats::gender] = convert_gender_toString(human.get_gender());
+    data[HumanStats::job] = convert_jobType_toString(human.get_job().job_type);
+    data[HumanStats::salary] = human.get_job().salary;
     return data;
 }
 bool StorageManager::update_player(Human player)

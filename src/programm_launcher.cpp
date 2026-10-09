@@ -65,7 +65,7 @@ void ProgrammLauncher::start()
             {
                 Human human = create_new_human();
                 register_human(human);
-                user_id = std::get<int>(human.get_stat(HumanStats::id));
+                user_id = human.get_id();
                 config_manager.set_new_id(user_id);
                 break;
             }

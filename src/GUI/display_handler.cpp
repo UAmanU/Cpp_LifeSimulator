@@ -52,12 +52,12 @@ void print_world_stats(const World &world)
 }
 void print_character_stats(const Human &human)
 {
-    std::string name = std::get<std::string>(human.get_stat(HumanStats::name));
-    int age = std::get<int>(human.get_stat(HumanStats::age));
-    int money = std::get<int>(human.get_stat(HumanStats::money));
-    Gender gender = std::get<Gender>(human.get_stat(HumanStats::gender));
-    std::string job_name = convert_jobType_toString(std::get<Job>(human.get_stat(HumanStats::job)).job_type);
-    int salary = std::get<Job>(human.get_stat(HumanStats::job)).salary;
+    std::string name = human.get_name();
+    int age = human.get_age();
+    int money = human.get_money();
+    Gender gender = human.get_gender();
+    std::string job_name = convert_jobType_toString(human.get_job().job_type);
+    int salary = human.get_job().salary;
     std::cout << name + "'s stats:\n";
     std::cout << "Age: " << age << "\n";
     std::cout << "Money: " << money << "\n";
@@ -67,12 +67,12 @@ void print_character_stats(const Human &human)
 }
 void print_action_message(const Human &human, HumanActions action)
 {
-    std::string name = std::get<std::string>(human.get_stat(HumanStats::name));
-    std::string energy_state = "Current energy: " + std::to_string(std::get<int>(human.get_stat(HumanStats::energy)));
+    std::string name = human.get_name();
+    std::string energy_state = "Current energy: " + std::to_string(human.get_energy());
     std::string action_state;
     if (action == HumanActions::work)
     {
-        std::string money = std::to_string(std::get<int>(human.get_stat(HumanStats::money)));
+        std::string money = std::to_string(human.get_money());
         action_state = name + " was working all day; his current money is: " + money;
     }
     else if (action == HumanActions::sleep)
