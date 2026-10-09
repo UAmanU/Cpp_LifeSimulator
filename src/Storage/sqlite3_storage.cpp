@@ -7,6 +7,10 @@
 
 // STL Includes
 
+SQLITE3_Storage::~SQLITE3_Storage()
+{
+    close_database();
+}
 void SQLITE3_Storage::create_table()
 {
     int result = sqlite3_open("players.db", &db);
@@ -38,6 +42,7 @@ std::vector<int> SQLITE3_Storage::get_all_id()
         int id = sqlite3_column_int(stmt, 0);
         all_ids.push_back(id);
     }
+    sqlite3_finalize(stmt);
     return all_ids;
 }
 bool SQLITE3_Storage::add_data(player_data player_stats)

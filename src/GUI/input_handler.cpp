@@ -40,15 +40,16 @@ std::string name_form()
     while (true)
     {
         std::cout << "Enter your name:\n";
-        if (!(std::cin >> name))
+        if (std::getline(std::cin, name))
         {
-            clear_cin();
-            std::cout << "Only strings!";
+            std::cout << "Only strings!\n";
             continue;
-        };
+        }
+
         if (name.length() >= 40 || name.length() <= 2)
         {
             std::cout << "name length must be from 3 to 40.\n";
+            continue;
         }
         break;
     }

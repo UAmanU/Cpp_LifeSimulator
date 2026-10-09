@@ -24,7 +24,7 @@ private:
 
 public:
     SQLITE3_Storage() = default;
-    ~SQLITE3_Storage() = default;
+    ~SQLITE3_Storage();
     void create_table() override;
     std::vector<int> get_all_id() override;
     bool add_data(player_data player_stats) override;

@@ -38,7 +38,8 @@ Job ProgrammLauncher::job_form() const
 Human ProgrammLauncher::create_new_human() const
 {
     std::string name = name_form();
-    int gender_int = gender_form();
+    print_all_genders({"Male", "Female"});
+    int gender_int = gender_form() - 1;
     Gender gender = convert_int_toGender(gender_int);
 
     int salary = 0;
@@ -110,6 +111,7 @@ void ProgrammLauncher::start()
         }
         catch (...)
         {
+            save();
             return;
         }
     }

@@ -12,8 +12,16 @@ Human::Human() : age(0), gender(Gender::NA), job(Job()) {};
 Human::Human(int id, int age, std::string name, Gender gender, Job job, int money) : id(id), age(age), name(std::move(name)), gender(gender), money(money), job(std::move(job)) {};
 void Human::work()
 {
+    int perfomance;
     int new_energy = energy - job.energy_per_day;
-    int perfomance = energy / job.energy_per_day;
+    if (job.energy_per_day == 0)
+    {
+        perfomance = energy;
+    }
+    else
+    {
+        perfomance = energy / job.energy_per_day;
+    }
     energy = (new_energy > 0 ? new_energy : 1);
     money += (job.salary * (perfomance < 1 ? perfomance : 1));
 }

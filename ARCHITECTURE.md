@@ -2,6 +2,7 @@ _________________________________
 
 ALL comments for explanation are written in declaration files (and main.cpp) of each class/struct/enum class and etc. object!
 
+IDK why but Include, Src and Lib folders are lower case in github. It's capitalize in my laptop!
 _________________________________
 
 
@@ -35,6 +36,7 @@ World
 
 ↓
 
+owns and controlls
 Human, Planet
 
 _________________________________
@@ -42,7 +44,7 @@ Human
 
 ↓
 
-Gender
+Gender, Job
 
 
 __________________________________
@@ -54,13 +56,14 @@ __________________________________
 
 
 Cpp_LifeSimulator[
-        include[
+        Include[
             programm_launcher.h
-            human[
+            Human[
                 gender.h
                 human.h
+                action.h
             ]
-            world[
+            World[
                 planet.h
                 world.h
             ]
@@ -80,17 +83,19 @@ Cpp_LifeSimulator[
                 display_handler.h
             ]
         ]
-        lib[
+        Lib[
             sqlite3.h
             sqlite3.c
         ]
-        src[
+        Src[
             main.cpp
-            human[
+            programm_launcher.cpp
+            Human[
                 human.cpp
                 gender.cpp
+                action.cpp
             ]
-            world[
+            World[
                 world.cpp
                 planet.cpp
             ]
