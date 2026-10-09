@@ -20,7 +20,7 @@ private:
     Planet planet;
     void add_person(Human human);
     auto choose_random_human() const;
-    Human *find_human_withId(int id) const;
+    int find_humanIndex_withId(int id) const;
 
 public:
     World();

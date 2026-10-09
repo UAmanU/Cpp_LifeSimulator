@@ -19,7 +19,7 @@ void Human::work()
 }
 void Human::sleep()
 {
-    energy = (energy >= 50 ? 100 : energy + 20);
+    energy = (energy >= 65 ? 100 : energy + 20);
 }
 int Human::get_id() const
 {

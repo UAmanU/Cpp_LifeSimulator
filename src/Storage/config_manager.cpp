@@ -19,6 +19,11 @@ void ConfigManager::load_id()
     }
     else
     {
+        if (file.peek() == std::ifstream::traits_type::eof())
+        {
+            player_id = -1;
+            file.close();
+        }
         file >> player_id;
         file.close();
     }

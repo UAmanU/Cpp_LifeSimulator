@@ -24,7 +24,7 @@ void World::add_person(Human human)
 }
 auto World::choose_random_human() const
 {
-    if (humans.size() == 0)
+    if (humans.empty())
     {
         throw Errors::InvalidDataError("There're no humans - i can't choose the random one.");
     }
@@ -41,42 +41,46 @@ void World::end_day()
         human.sleep();
     }
 }
-Human *World::find_human_withId(int id) const
+int World::find_humanIndex_withId(int id) const
 {
-    Human *human_ptr = nullptr;
-    for (const auto &human : humans)
+    if (humans.empty())
     {
-        if (human.get_id() == id)
+        throw Errors::InvalidDataError("There're no humans - i can't find human with this id.");
+    }
+    for (int index = 0; index < humans.size(); index++)
+    {
+        Human current_human = humans[index];
+        if (current_human.get_id() == id)
         {
-            *human_ptr = human;
-            return human_ptr;
+            return index;
         }
     }
     throw Errors::InvalidDataError("There is not player with this id.");
 }
 Human World::human_action(HumanActions action, int id)
 {
-    Human human;
+    Human *human_ptr;
     if (action == HumanActions::NA)
     {
         action = choose_random_action();
     }
     if (id == -1)
     {
-        human = choose_random_human();
+        *human_ptr = choose_random_human();
     }
     else
     {
-        human = *find_human_withId(id);
+        *human_ptr = humans[find_humanIndex_withId(id)];
     }
     if (action == HumanActions::work)
     {
-        human.work();
+        human_ptr->work();
     }
     else if (action == HumanActions::sleep)
     {
-        human.sleep();
+        human_ptr->sleep();
     }
+    human_ptr = nullptr;
 }
 Planet World::get_planet() const
 {

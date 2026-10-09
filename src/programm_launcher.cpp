@@ -31,7 +31,7 @@ Job ProgrammLauncher::job_form() const
         jobs_types.push_back(convert_string_toJobType(job));
     }
     print_all_jobs(jobs);
-    int choice = choose_job();
+    int choice = choose_job() - 1;
     JobType chosen_jobType = jobs_types[choice];
     return Job(static_cast<int>(chosen_jobType), chosen_jobType);
 }
@@ -56,6 +56,7 @@ void ProgrammLauncher::start()
     bool need_to_continue = true;
     greeting();
     config_manager.load_id();
+
     int user_id = config_manager.get_id();
     if (!(is_user_registered()))
     {
@@ -95,6 +96,7 @@ void ProgrammLauncher::start()
             current_human = world->human_action(current_action);
             print_action_message(current_human, current_action);
             world->end_day();
+
             need_to_continue = continue_form();
             // Game loop
         }

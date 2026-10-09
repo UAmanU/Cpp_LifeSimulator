@@ -10,5 +10,5 @@
 
 std::string get_planet_name(Planet planet)
 {
-    return static_cast<std::string>(planet_map[planet]);
+    return planet_map.at(planet);
 }

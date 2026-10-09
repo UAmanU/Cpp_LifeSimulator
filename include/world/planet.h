@@ -23,7 +23,7 @@ enum class Planet
     Uranus,
     Neptune
 };
-consteval std::unordered_map<Planet, std::string> planet_map = {
+std::unordered_map<Planet, std::string> planet_map = {
     {Planet::Mercury, "Mercury"},
     {Planet::Venus, "Venus"},
     {Planet::Earth, "Earth"},

@@ -103,7 +103,7 @@ int choose_action()
     while (true)
     {
         std::cout << "Enter the number of your choice:\n";
-        if (!(std::cout << choice))
+        if (!(std::cin >> choice))
         {
             clear_cin();
             std::cout << "Only numbers!\n";

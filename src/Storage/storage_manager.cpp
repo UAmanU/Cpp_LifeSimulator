@@ -35,8 +35,11 @@ int StorageManager::add_player(const Human &player)
 
     if (is_data_valid(raw_data))
     {
-        storage->add_data(std::move(raw_data));
-        id = storage->get_last_id();
+        bool result = storage->add_data(std::move(raw_data));
+        if (result)
+        {
+            id = storage->get_last_id();
+        }
     }
     else
     {
