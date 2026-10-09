@@ -101,7 +101,7 @@ player_data StorageManager::convert_human_toData(const Human &human) const
     data[HumanStats::name] = human.get_name();
     data[HumanStats::age] = human.get_age();
     data[HumanStats::money] = human.get_money();
-    data[HumanStats::gender] = convert_gender_toString(human.get_gender());
+    data[HumanStats::gender] = static_cast<int>(human.get_gender());
     data[HumanStats::job] = convert_jobType_toString(human.get_job().job_type);
     data[HumanStats::salary] = human.get_job().salary;
     return data;
