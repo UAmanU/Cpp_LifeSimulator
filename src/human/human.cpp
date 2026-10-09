@@ -21,24 +21,33 @@ void Human::sleep()
 {
     energy = (energy >= 50 ? 100 : energy + 20);
 }
-player_data_types Human::get_stat(HumanStats stat) const
+int Human::get_id() const
 {
-    switch (stat)
-    {
-    case HumanStats::id:
-        return id;
-    case HumanStats::name:
-        return name;
-    case HumanStats::age:
-        return age;
-    case HumanStats::money:
-        return money;
-    case HumanStats::salary:
-        return job.salary;
-    case HumanStats::energy:
-        return energy;
-    }
-    throw Errors::InvalidDataError("Invalid stat requested.");
+    return id;
+}
+std::string Human::get_name() const
+{
+    return name;
+}
+int Human::get_age() const
+{
+    return age;
+}
+Gender Human::get_gender() const
+{
+    return gender;
+}
+int Human::get_money() const
+{
+    return money;
+}
+Job Human::get_job() const
+{
+    return job;
+}
+int Human::get_energy() const
+{
+    return energy;
 }
 bool Human::need_to_rest() const
 {
