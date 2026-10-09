@@ -20,13 +20,13 @@ private:
     Planet planet;
     void add_person(Human human);
     auto choose_random_human() const;
+    Human find_human_withId(int id) const;
 
 public:
     World();
     World(std::vector<Human> humans, Planet planet);
     Human human_action(HumanActions action = HumanActions::NA, int id = -1);
-    bool end_day();
-    HumanActions choose_random_action() const;
+    void end_day();
     void set_humans(std::vector<Human> new_humans);
     std::vector<Human> get_humans() const;
     Planet get_planet() const;

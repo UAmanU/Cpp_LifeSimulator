@@ -17,3 +17,4 @@ enum class HumanActions : int
     NA = 3,
 };
 HumanActions convert_int_toHumanActions(int number);
+HumanActions choose_random_action();

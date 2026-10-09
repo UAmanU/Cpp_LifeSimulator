@@ -89,7 +89,7 @@ void ProgrammLauncher::start()
         current_action = convert_int_toHumanActions(choice);
         current_human = world->human_action(current_action, user_id);
         print_action_message(current_human, current_action);
-        current_action = world->choose_random_action();
+        current_action = choose_random_action();
         current_human = world->human_action(current_action);
         print_action_message(current_human, current_action);
         world->end_day();
