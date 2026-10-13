@@ -20,6 +20,11 @@ void print_error(const std::string &msg)
 {
     std::cout << "Oops! " + msg << "\n";
 }
+void print_menu(const std::vector<std::string> &menu)
+{
+    std::cout << "Here's the menu of actions:\n";
+    print_string_vector(menu);
+}
 void print_all_jobs(const std::vector<std::string> &jobs)
 {
     std::cout << "Choose your job:\n";

@@ -13,28 +13,7 @@ void clear_cin()
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
-int gender_form()
-{
-    int choice;
-    while (true)
-    {
-        std::cout << "Enter the id of Gender you want to be:\n";
-        if (!(std::cin >> choice))
-        {
-            clear_cin();
-            std::cout << "Only numbers!";
-            continue;
-        };
-        if (choice <= 0)
-        {
-            std::cout << "Only positive numbers!\n";
-            continue;
-        }
-        clear_cin();
-        break;
-    }
-    return choice;
-}
+
 std::string name_form()
 {
     std::string name;
@@ -57,27 +36,7 @@ std::string name_form()
     }
     return name;
 }
-int choose_job()
-{
-    int choice;
-    while (true)
-    {
-        std::cout << "Enter id of job you want to work:\n";
-        if (!(std::cin >> choice))
-        {
-            clear_cin();
-            std::cout << "Only numbers!\n";
-            continue;
-        }
-        else if (choice <= 0)
-        {
-            std::cout << "Only positive numbers!\n";
-            continue;
-        }
-        break;
-    }
-    return choice;
-}
+
 bool continue_form()
 {
     std::cout << "Continue?\n1 - yes;\n2 - no;\n";
@@ -100,7 +59,7 @@ bool continue_form()
     }
     return choice == 1;
 }
-int choose_action()
+int number_form()
 {
     int choice;
     while (true)

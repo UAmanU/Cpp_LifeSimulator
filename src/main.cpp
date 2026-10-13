@@ -1,5 +1,5 @@
 // Includes
-#include "Include/programm_launcher.h"
+#include "Include/Core/programm_launcher.h"
 #include "Include/Storage/sqlite3_storage.h"
 // Includes
 
@@ -19,8 +19,9 @@ int main()
     std::unique_ptr<StorageManager> storage_manager = std::make_unique<StorageManager>(std::move(storage));
     storage_manager->prepare_database();
     std::unique_ptr<World> world = std::make_unique<World>();
+    std::unique_ptr<GameLauncher> game_launcher = std::make_unique<GameLauncher>(*storage_manager, std::move(world));
 
-    std::unique_ptr<ProgrammLauncher> programm_launcher = std::make_unique<ProgrammLauncher>(std::move(storage_manager), std::move(world));
+    std::unique_ptr<ProgrammLauncher> programm_launcher = std::make_unique<ProgrammLauncher>(std::move(storage_manager), std::move(game_launcher));
     programm_launcher->start();
 
     // Code

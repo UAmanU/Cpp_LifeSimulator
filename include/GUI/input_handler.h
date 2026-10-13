@@ -14,8 +14,6 @@ Input_handler is often used with Display handler (which is declared in include/G
 Their functions are usually called by ProgrammLauncher class (which is declared in include/programm_launcher.h)*/
 
 void clear_cin();
-int choose_action();
-int choose_job();
+int number_form();
 bool continue_form();
 std::string name_form();
-int gender_form();

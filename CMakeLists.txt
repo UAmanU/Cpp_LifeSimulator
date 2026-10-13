@@ -17,5 +17,6 @@ target_include_directories(Cpp_LifeSimulator
 PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}
     "${CMAKE_CURRENT_SOURCE_DIR}/Include"
+    "${CMAKE_CURRENT_SOURCE_DIR}/Core"
     "${CMAKE_CURRENT_SOURCE_DIR}/Include/Storage"
     "${CMAKE_CURRENT_SOURCE_DIR}/Lib/")
