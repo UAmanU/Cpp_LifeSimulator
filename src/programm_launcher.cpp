@@ -25,7 +25,6 @@ Job ProgrammLauncher::job_form() const
 {
     std::vector<std::string> jobs = get_all_jobNames();
     std::vector<JobType> jobs_types;
-    jobs_types.reserve(6);
     for (const std::string &job : jobs)
     {
         jobs_types.push_back(convert_string_toJobType(job));
@@ -39,12 +38,14 @@ Human ProgrammLauncher::create_new_human() const
 {
     std::string name = name_form();
     print_all_genders({"Male", "Female"});
-    int gender_int = gender_form() - 1;
-    Gender gender = convert_int_toGender(gender_int);
+    int gender_int = gender_form();
+    if (gender_int >= 3){
+        throw Errors::InputError("Invalid gender id: " + std::to_string(gender_int));
+    }
+    Gender gender = convert_int_toGender(gender_int-1);
 
     int salary = 0;
-    Job job = job_form();
-    Human player(-1, 0, name, gender, std::move(job));
+    Human player(-1, 0, name, gender);
     return player;
 }
 void ProgrammLauncher::register_human(Human &human)
@@ -66,6 +67,8 @@ void ProgrammLauncher::start()
             try
             {
                 Human human = create_new_human();
+                Job job = job_form();
+                human.set_job(std::move(job));
                 register_human(human);
                 user_id = human.get_id();
                 config_manager.set_new_id(user_id);

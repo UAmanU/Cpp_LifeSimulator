@@ -24,7 +24,7 @@ class IStorage
 public:
     IStorage() = default;
     virtual ~IStorage() = default;
-    virtual void create_table();
+    virtual void create_table() = 0;
     virtual std::vector<int> get_all_id() = 0;
     virtual bool add_data(player_data player_stats) = 0;
     virtual bool delete_data(int id) = 0;

@@ -27,7 +27,10 @@ void print_all_jobs(const std::vector<std::string> &jobs)
 }
 void print_string_vector(const std::vector<std::string> &vector)
 {
-
+    if (vector.empty()){
+        std::cout<< "No data to display.\n";
+        return;
+    }
     for (int index = 1; index < vector.size() + 1; index++)
     {
         std::string string = vector[index - 1];

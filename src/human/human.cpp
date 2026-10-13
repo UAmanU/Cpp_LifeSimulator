@@ -65,3 +65,6 @@ void Human::set_id(int new_id)
 {
     id = new_id;
 }
+void Human::set_job(Job new_job){
+    job = std::move(new_job);
+}

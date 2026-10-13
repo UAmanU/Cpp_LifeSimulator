@@ -39,7 +39,7 @@ protected:
     int energy = 100;
 
 public:
-    Human(int id, int age, std::string name, Gender gender, Job job, int money = 0);
+    Human(int id, int age, std::string name, Gender gender, Job job = Job(), int money = 0);
     Human();
     virtual ~Human() = default;
     virtual void work();
@@ -53,4 +53,5 @@ public:
     int get_energy() const;
     bool need_to_rest() const;
     void set_id(int new_id);
+    void set_job(Job new_job);
 };
