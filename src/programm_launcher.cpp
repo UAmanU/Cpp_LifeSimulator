@@ -30,8 +30,12 @@ Job ProgrammLauncher::job_form() const
         jobs_types.push_back(convert_string_toJobType(job));
     }
     print_all_jobs(jobs);
-    int choice = choose_job() - 1;
-    JobType chosen_jobType = jobs_types[choice];
+    int choice = choose_job();
+    if (choice > jobs.size())
+    {
+        throw Errors::InvalidDataError("I don't know job with " + std::to_string(choice) + " id.");
+    }
+    JobType chosen_jobType = jobs_types[choice - 1];
     return Job(static_cast<int>(chosen_jobType), chosen_jobType);
 }
 Human ProgrammLauncher::create_new_human() const
@@ -39,10 +43,11 @@ Human ProgrammLauncher::create_new_human() const
     std::string name = name_form();
     print_all_genders({"Male", "Female"});
     int gender_int = gender_form();
-    if (gender_int >= 3){
+    if (gender_int > 2)
+    {
         throw Errors::InputError("Invalid gender id: " + std::to_string(gender_int));
     }
-    Gender gender = convert_int_toGender(gender_int-1);
+    Gender gender = convert_int_toGender(gender_int - 1);
 
     int salary = 0;
     Human player(-1, 0, name, gender);
@@ -75,6 +80,10 @@ void ProgrammLauncher::start()
                 break;
             }
             catch (const Errors::InputError &e)
+            {
+                print_error(e.what());
+            }
+            catch (const Errors::InvalidDataError &e)
             {
                 print_error(e.what());
             }
@@ -114,6 +123,7 @@ void ProgrammLauncher::start()
         }
         catch (...)
         {
+
             save();
             return;
         }

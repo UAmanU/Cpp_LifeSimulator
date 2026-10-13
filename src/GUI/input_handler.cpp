@@ -30,6 +30,7 @@ int gender_form()
             std::cout << "Only positive numbers!\n";
             continue;
         }
+        clear_cin();
         break;
     }
     return choice;
@@ -43,6 +44,7 @@ std::string name_form()
         if (!(std::getline(std::cin, name)))
         {
             std::cout << "Only strings!\n";
+            clear_cin();
             continue;
         }
 
