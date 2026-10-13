@@ -19,7 +19,7 @@ private:
     std::vector<Human> humans;
     Planet planet;
     void add_person(Human human);
-    auto choose_random_human() const;
+    int choose_random_index() const;
     int find_humanIndex_withId(int id) const;
 
 public:

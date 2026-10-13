@@ -3,6 +3,7 @@
 #include "Include/GUI/input_handler.h"
 #include "Include/GUI/display_handler.h"
 #include "Include/errors.h"
+
 // Includes
 
 // STL Includes
@@ -102,8 +103,14 @@ void ProgrammLauncher::start()
             // Game loop
             print_action_choices(actions);
             int choice = choose_action();
+            if (choice > 2)
+            {
+                throw Errors::InputError("I don't have any choice with this id.");
+            }
             current_action = convert_int_toHumanActions(choice);
+
             current_human = world->human_action(current_action, user_id);
+
             print_action_message(current_human, current_action);
             current_action = choose_random_action();
             current_human = world->human_action(current_action);
@@ -121,9 +128,14 @@ void ProgrammLauncher::start()
         {
             print_error(e.what());
         }
+        catch (const std::exception &e)
+        {
+            print_error(e.what());
+            save();
+            return;
+        }
         catch (...)
         {
-
             save();
             return;
         }

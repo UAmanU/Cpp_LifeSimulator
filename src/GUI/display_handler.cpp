@@ -27,8 +27,9 @@ void print_all_jobs(const std::vector<std::string> &jobs)
 }
 void print_string_vector(const std::vector<std::string> &vector)
 {
-    if (vector.empty()){
-        std::cout<< "No data to display.\n";
+    if (vector.empty())
+    {
+        std::cout << "No data to display.\n";
         return;
     }
     for (int index = 1; index < vector.size() + 1; index++)
@@ -76,11 +77,11 @@ void print_action_message(const Human &human, HumanActions action)
     if (action == HumanActions::work)
     {
         std::string money = std::to_string(human.get_money());
-        action_state = name + " was working all day; his current money is: " + money;
+        action_state = name + " was working all day; his current money is: " + money + "\n";
     }
     else if (action == HumanActions::sleep)
     {
-        action_state = name + "slept;";
+        action_state = name + " slept;";
     }
     std::cout << action_state + energy_state + "\n";
 }

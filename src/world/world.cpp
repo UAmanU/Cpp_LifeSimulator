@@ -5,6 +5,7 @@
 
 // STL Includes
 #include <random>
+#include <iostream>
 // STL Includes
 
 World::World() : humans(std::vector<Human>()), planet(Planet()) {};
@@ -22,7 +23,7 @@ void World::add_person(Human human)
 {
     humans.push_back(std::move(human));
 }
-auto World::choose_random_human() const
+int World::choose_random_index() const
 {
     if (humans.empty())
     {
@@ -31,7 +32,7 @@ auto World::choose_random_human() const
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<int> dist(0, humans.size() - 1);
-    return humans[dist(gen)];
+    return dist(gen);
 }
 
 void World::end_day()
@@ -47,40 +48,37 @@ int World::find_humanIndex_withId(int id) const
     {
         throw Errors::InvalidDataError("There're no humans - i can't find human with this id.");
     }
+    Human current_human;
     for (int index = 0; index < humans.size(); index++)
     {
-        Human current_human = humans[index];
+        current_human = humans[index];
         if (current_human.get_id() == id)
         {
             return index;
         }
     }
-    throw Errors::InvalidDataError("There is not player with this id.");
+    throw Errors::InvalidDataError("There is no player with this id.");
 }
 Human World::human_action(HumanActions action, int id)
 {
-    Human *human_ptr;
+    int index = (id == -1 ? choose_random_index() : find_humanIndex_withId(id));
+    Human &human = humans[index];
+
     if (action == HumanActions::NA)
     {
         action = choose_random_action();
     }
-    if (id == -1)
-    {
-        *human_ptr = choose_random_human();
-    }
-    else
-    {
-        *human_ptr = humans[find_humanIndex_withId(id)];
-    }
+
     if (action == HumanActions::work)
     {
-        human_ptr->work();
+        human.work();
     }
     else if (action == HumanActions::sleep)
     {
-        human_ptr->sleep();
+        human.sleep();
     }
-    return *human_ptr;
+
+    return human;
 }
 Planet World::get_planet() const
 {
