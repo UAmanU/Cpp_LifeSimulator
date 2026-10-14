@@ -15,7 +15,10 @@ It doesn't contains any logic except function for converting it to string.*/
 enum class MenuTypes
 {
     Game,
-    Exit
+    ResetDatabase,
+    ReadAllPlayers,
+    AddNewPlayer,
+    Exit,
 };
 
 std::string convert_menuTypes_toString(const MenuTypes menu_type);

@@ -18,14 +18,15 @@ private:
     StorageManager &storage_manager;
     std::unique_ptr<World> world;
     ConfigManager config_manager;
-    Human create_new_human() const;
-    void register_human(Human &human);
-    Job job_form() const;
     bool is_user_registered();
-    bool save();
 
 public:
     GameLauncher(StorageManager &storage_manager, std::unique_ptr<World> world);
     ~GameLauncher() = default;
+    Human create_new_human() const;
+    void register_human(Human &human);
+    Job job_form() const;
     void start_game();
+    bool save();
+    std::vector<Human> get_all_players() const;
 };

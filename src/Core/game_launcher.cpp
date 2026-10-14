@@ -129,15 +129,14 @@ void GameLauncher::start_game()
         catch (const std::exception &e)
         {
             print_error(e.what());
-            save();
             return;
         }
         catch (...)
         {
-            save();
             return;
         }
     }
-    bool result = save();
-    print_datasave_result(result);
+}
+std::vector<Human> GameLauncher::get_all_players() const{
+    return world->get_humans();
 }

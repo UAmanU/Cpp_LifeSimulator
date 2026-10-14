@@ -18,7 +18,7 @@ class World
 private:
     std::vector<Human> humans;
     Planet planet;
-    void add_person(Human human);
+
     int choose_random_index() const;
     int find_humanIndex_withId(int id) const;
 
@@ -26,6 +26,7 @@ public:
     World();
     World(std::vector<Human> humans, Planet planet);
     Human human_action(HumanActions action = HumanActions::NA, int id = -1);
+    void add_person(Human human);
     void end_day();
     void set_humans(std::vector<Human> new_humans);
     std::vector<Human> get_humans() const;
